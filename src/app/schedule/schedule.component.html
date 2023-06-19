@@ -1,0 +1,256 @@
+<div class="row">
+  <mat-drawer-container
+    style="overflow: hidden !important"
+    class="example-container"
+    [hasBackdrop]="false"
+  >
+    <mat-drawer id="drawer" #drawer mode="over" [opened]="true">
+      <div class="row" style="display: flex">
+        <nav class="navbar-vertical show">
+          <a
+            class="navbar-brand"
+            style="position: absolute; margin-left: 72px; margin-top: 223px"
+            ><b> {{ this.usermain[2] }}</b></a
+          >
+          <img
+            src="{{ this.usermain[5] }}"
+            style="width: 180px; height: 180px; border-radius: 50%"
+          />
+
+          <button class="navbar-toggler ml-auto" (click)="drawer.toggle()">
+            <span class="navbar-toggler-icon"
+              ><i style="color: white" class="fas fa-bars"></i
+            ></span>
+          </button>
+
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="/profile">Profile </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/explorer">Explorer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/connection">My connections</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/schedule">Agenda</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/ ">Log Out</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </mat-drawer>
+
+    <div>
+      <nav
+        class="navbar-vertical show"
+        style="
+          overflow: hidden !important;
+          width: 7px;
+          position: fixed;
+          height: 100%;
+        "
+      >
+        <button class="navbar-toggler" (click)="drawer.toggle()">
+          <span
+            ><i
+              style="padding-top: 0.1rem; margin-left: -2.5rem; color: white"
+              class="fas fa-bars"
+            ></i
+          ></span>
+        </button>
+      </nav>
+
+      <div class="col-lg-5 col-sm-12 calendars" id="calendar">
+        <h1>Your Calendar</h1>
+        <div>
+          <full-calendar
+            id="two"
+            #calendar
+            [options]="calendarOptions"
+          ></full-calendar>
+        </div>
+        <button
+          *ngIf="this.usermain[10]"
+          (click)="manage()"
+          class="btn"
+          id="id2"
+          style="color: #2c3e50; background: transparent"
+          mat-raised-button
+        >
+          <i class="bi bi-arrow-right"></i>
+          manage events
+        </button>
+      </div>
+    </div>
+
+    <div
+      hidden
+      class="container"
+      id="manage"
+      style="overflow: hidden !important"
+    >
+      <div class="row white-bg top-0">
+        <input type="hidden" id="dateinput" name="date" />
+        <div id="content">
+          <!-- Togle butten -->
+          <input
+            id="input-switch-employ"
+            type="radio"
+            name="input-switch-os"
+            onclick="ChangeStateInfos()"
+            checked="checked"
+          />
+          <input
+            id="input-switch-employer"
+            type="radio"
+            name="input-switch-os"
+            onclick="ChangeStateInfos()"
+          />
+
+          <!-- employee -->
+          <div id="employ-new-wrapper">
+            <div class="row">
+              <div class="col-md-12">
+                <main id="form" class="row">
+                  <div class="col-md-12">
+                    <div class="main-header">
+                      <div class="main-title">
+                        <h1>New Event</h1>
+                      </div>
+
+                      <div class="main-form">
+                        <form (submit)="addEvent()" role="form">
+                          <input
+                            type="text"
+                            id="ftitle"
+                            placeholder="Add title"
+                            required
+                          />
+                          <mat-form-field
+                            style="
+                              background: white;
+                              width: 100%;
+                              padding-bottom: 60px;
+                            "
+                            appearance="standard"
+                            required
+                            multiple
+                          >
+                            <mat-label>Students</mat-label>
+                            <mat-select id="to" multiple>
+                              <mat-option
+                                *ngFor="let topping of connectionList"
+                                [value]="topping"
+                                >{{ topping.student_email }}</mat-option
+                              >
+                            </mat-select>
+                          </mat-form-field>
+                          <div class="input-group">
+                            <input
+                              type="date"
+                              value="{{ date }}"
+                              id="fdate"
+                              required
+                            />
+                          </div>
+
+                          <div class="input-hour">
+                            <div id="fhourdiv">
+                              <input
+                                type="time"
+                                value="08:00"
+                                matInput
+                                id="fstart"
+                                class="hour"
+                                onchange="form_validate_hour()"
+                                required
+                              />
+
+                              <input
+                                type="time"
+                                value="10:00"
+                                id="fend"
+                                class="hour"
+                              />
+                            </div>
+                          </div>
+                          <label
+                            hidden
+                            id="noStudent"
+                            style="color: red; text-align: left; padding: 10px"
+                            hidden
+                            >At least one student sould be invited</label
+                          >
+                          <input
+                            type="submit"
+                            id="fsubmit"
+                            value="Save"
+                            class="button"
+                          />
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </main>
+                <button
+                  *ngIf="this.usermain[10]"
+                  (click)="back()"
+                  class="btn"
+                  id="id2"
+                  style="color: #2c3e50; background: transparent"
+                  mat-raised-button
+                >
+                  <i class="bi bi-arrow-left"></i>
+                  Back
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /employee -->
+    <!-- employer -->
+    <!-- /hall of employer -->
+    <!-- <table   id="table" >
+       
+			<tr *ngFor="let item of Meetings">
+			  
+			  <td style="width: 70%;">
+				<span>
+					<b>{{item.title}}</b>
+				</span><br>
+				<span>
+					{{item.start}}-{{item.end}}
+				</span>
+				<span>
+					{{item.descprition}}
+				</span>
+			  </td>
+			  <td > <button mat-raised-button 
+				class="action" *ngIf="item.emailfrom!=usermain[4]" 
+				  >Can't Attend</button>
+			  </td>
+			  <td style="flex-grow: 8"> <button mat-raised-button
+				*ngIf="item.emailfrom==usermain[4]" 
+				class="action">Delete</button>
+			 </td>
+			</tr></table>
+			</div> 
+		  </div>
+		  
+			<button (click)="return()" 
+			class="btn"  mat-raised-button style="color:#2c3e50;
+			background: white;padding-right: 20px;margin-left: 100px ;
+			margin-bottom: auto;
+			" >
+				<i class="bi bi-arrow-left"></i>
+				Back</button>  
+			  </div> -->
+  </mat-drawer-container>
+</div>

@@ -1,0 +1,299 @@
+table {
+  border-collapse: collapse;
+  width: 20%;
+
+}
+
+body {
+  margin-top: 20px;
+  width: 80%;
+  overflow-y: visible;
+  height: 100%;
+}
+
+.align-center,
+.center {
+  text-align: center !important;
+}
+
+.example-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+}
+
+mat-drawer-content {
+  height: 200% !important;
+}
+
+mat-drawer {
+  background-color: #de3673;
+  width: 320px;
+  color: whitesmoke;
+  height: 100%;
+  padding: 0.5rem 1rem;
+}
+
+a {
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.navbar-vertical {
+  background-color: #de3673;
+  width: 320px;
+  color: whitesmoke;
+  height: 100%;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  transition: left 0.31s;
+  left: 0;
+  top: 0;
+  order: 3;
+  color: whitesmoke;
+  padding-top: 40px;
+  padding-left: 60px;
+}
+
+.navbar-vertical .navbar-brand {
+  margin-right: 0;
+  margin-right: 2.5rem;
+  align-items: center;
+  display: block;
+  color: whitesmoke;
+}
+
+.navbar-vertical .navbar-toggler {
+  border: none;
+  padding: 0;
+  display: inline-block;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.75rem;
+  cursor: pointer;
+  color: whitesmoke !important;
+}
+
+.navbar-vertical ul.navbar-nav {
+  width: 90%;
+  margin-top: 4.5rem;
+  color: whitesmoke !important;
+}
+
+.navbar-vertical.show {
+  left: 0;
+}
+
+.navbar-vertical.hidden {
+  left: -276px;
+}
+
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #DDD;
+}
+
+tr:hover {
+  background-color: #d3d6d6;
+}
+
+.card {
+  border-radius: 2px;
+  background-color: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.material-table {
+  font-family: "Roboto", 'Helvetica Neue, Helvetica, Arial';
+  min-width: 85%;
+  height: 324px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.material-table-body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100% - 48px);
+}
+
+.material-table-header {
+  content: '';
+  top: 0;
+  height: 48px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+}
+
+.group {
+  width: 60%;
+  margin-left: 350px;
+}
+
+table {
+  white-space: nowrap;
+  color: rgba(0, 0, 0, 0.87);
+  width: 100%;
+  font-size: 12px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+table td,
+table th {
+  line-height: 45px;
+}
+
+table th div,
+table thead tr:last-child th,
+table td {
+  padding: 0 8px 0 24px;
+}
+
+
+table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+}
+
+table thead tr:last-child th {
+  line-height: 0;
+  opacity: 0;
+}
+
+.w-Th {
+  width: 20%
+}
+
+table thead th div {
+  position: absolute;
+  line-height: 48px;
+  top: 0;
+}
+
+table tbody tr:hover {
+  cursor: pointer;
+  background-color: #EDEDF2;
+}
+
+.img {
+  width: 350px;
+  transform: translateX(50%);
+}
+
+@media (max-width: 676px) {
+
+  .container,
+  .container-sm {
+    max-width: 340px;
+    max-height: 400px;
+  }
+
+  .group {
+    width: 100%;
+    margin-left: 70px;
+  }
+
+  table td,
+  table th {
+    line-height: 35px;
+  }
+
+  .img {
+    width: 150px;
+    transform: translateX(70%) translateY(7%);
+  }
+
+  table th div,
+  table thead tr:last-child th,
+  table td {
+    padding: 0 2px 0 5px !important;
+  }
+
+  button {
+    padding: 0 !important;
+  }
+
+  .w-Th {
+    width: 12%;
+  }
+
+  th,
+  td {
+    padding: 0px !important;
+  }
+
+  .btn {
+    padding: 3px 10px 0 20px !important;
+  }
+
+}
+
+button {
+  margin-left: 13px !important;
+
+  padding: 0 80px;
+  text-align: left;
+}
+
+.btn2 {
+  margin-top: -40px;
+  padding: 3px 50px 0 55px;
+  margin-top: -37px;
+  position: static;
+  background: rgb(143, 143, 143);
+  color: white;
+}
+
+.tag {
+  background: #cccccc;
+  border-radius: 50px;
+  font-size: 12px;
+  margin: 0;
+  color: #fff;
+  padding: 2px 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.tag-Online {
+  background-color: #47bcd4;
+}
+
+.tag-Both {
+  background-color: #5e76bf;
+}
+
+.tag-In-person {
+  background-color: #cd5b9f;
+}
+
+.card-body p {
+  font-size: 13px;
+  margin: 0 0 40px;
+}
+
+.user {
+  display: flex;
+  margin-top: auto;
+}
+
+.user img {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.user-info h5 {
+  margin: 0;
+}
+
+.user-info small {
+  color: #545d7a;
+}

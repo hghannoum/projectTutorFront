@@ -1,0 +1,234 @@
+<mat-drawer-container class="example-container" [hasBackdrop]="false">
+  <mat-drawer #drawer mode="over">
+    <div class="row" style="display: flex">
+      <nav class="navbar-vertical show">
+        <a
+          class="navbar-brand"
+          style="position: absolute; margin-left: 72px; margin-top: 223px"
+          ><b> {{ this.usermain[2] }}</b></a
+        >
+        <img
+          src="{{ this.usermain[5] }}"
+          style="width: 180px; height: 180px; border-radius: 50%"
+        />
+
+        <button class="navbar-toggler" (click)="drawer.toggle()">
+          <span><i style="padding-top: 0.1rem" class="fas fa-bars"></i></span>
+        </button>
+
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/profile">Profile </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/explorer">Explorer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/connection">My connections</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/schedule">Agenda</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/ ">Log Out</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </mat-drawer>
+  <nav class="navbar-vertical show" style="width: 32px">
+    <button
+      class="navbar-toggler"
+      style="width: 20px"
+      (click)="drawer.toggle()"
+    >
+      <span><i class="fas fa-bars"></i></span>
+    </button>
+  </nav>
+
+  <mat-tab-group mat-align-tabs="center" class="group">
+    <mat-tab *ngIf="this.usermain[10]" label="Requests">
+      <table>
+        <th class="w-Th"></th>
+        <th class="w-Th"></th>
+        <th class="w-Th">Category:</th>
+        <th class="w-Th">Way:</th>
+        <th class="w-Th">City</th>
+        <tr id="req{{ j }}" *ngFor="let item of Req; let j = index">
+          <td>
+            <img
+              style="width: 40px; border-radius: 50%"
+              src="{{ item.img_from }}"
+              alt=""
+            />
+          </td>
+          <td class="dd" class="user-{{ i }}">
+            {{ item.name_from }}
+          </td>
+          <td>
+            <div style="padding-right: 20px">
+              <span class="lg">{{ item.category_from }}</span>
+            </div>
+          </td>
+          <td>
+            <div style="padding-right: 20px">
+              <span class="lg">{{ item.way_from }}</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span class="lg">{{ item.city_from }}</span>
+            </div>
+          </td>
+          <td style="flex-grow: 16">
+            <button
+              mat-raised-button
+              style="
+                color: white !important;
+                background-color: black !important; ;
+              "
+              (click)="accept(j)"
+            >
+              Accept
+            </button>
+            <button
+              mat-raised-button
+              style="
+                color: white !important;
+                background-color: black !important; ;
+              "
+              (click)="Delete(j, 'req', Req)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </table>
+
+      <img
+        hidden
+        src="../../assets/images/empty.png"
+        class="img"
+        id="img1"
+        alt=""
+      />
+    </mat-tab>
+    <mat-tab label="My connections">
+      <table>
+        <th class="w-Th"></th>
+        <th class="w-Th"></th>
+        <th class="w-Th">Category:</th>
+        <th class="w-Th">way:</th>
+        <th class="w-Th">City</th>
+        <tr id="con{{ i }}" *ngFor="let item of Con; let i = index">
+          <td>
+            <img
+              style="width: 40px; border-radius: 50%"
+              src="{{ this.usermain[10] ? item.img_from : item.img_to }}"
+              alt=""
+            />
+          </td>
+          <td class="dd" id="a">
+            {{ this.usermain[10] ? item.name_from : item.name_to }}
+          </td>
+
+          <td>
+            <div style="padding-right: 20px">
+              <span class="lg">{{
+                this.usermain[10] ? item.category_from : item.category_to
+              }}</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span class="lg">{{
+                this.usermain[10] ? item.way_from : item.way_to
+              }}</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span class="lg">{{
+                this.usermain[10] ? item.city_from : item.city_to
+              }}</span>
+            </div>
+          </td>
+          <td>
+            <button
+              mat-raised-button
+              style="
+                color: white !important;
+                background-color: black !important; ;
+              "
+              (click)="Delete(i, 'con', Con)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </table>
+      <img
+        hidden
+        src="../../assets/images/empty.png"
+        style="width: 350px; transform: translateX(50%)"
+        id="img2"
+        alt=""
+      />
+    </mat-tab>
+
+    <mat-tab *ngIf="!this.usermain[10]" label="Resquests Sent">
+      <table>
+        <th class="w-Th"></th>
+        <th class="w-Th"></th>
+        <th class="w-Th">Category:</th>
+        <th class="w-Th">Way:</th>
+        <th class="w-Th">City</th>
+
+        <tr id="myreq{{ k }}" *ngFor="let item of MyReq; let k = index">
+          <td>
+            <img
+              style="width: 40px; border-radius: 50%"
+              src="{{ item.img_to }}"
+              alt=""
+            />
+          </td>
+          <td class="dd" id="a">{{ item.name_to }}</td>
+          <td>
+            <div style="padding-right: 20px">
+              <span class="lg">{{ item.category_to }}</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span class="lg">{{ item.way_to }}</span>
+            </div>
+          </td>
+          <td>
+            <div>
+              <span class="lg">{{ item.city_to }}</span>
+            </div>
+          </td>
+
+          <td>
+            <button
+              mat-raised-button
+              style="
+                color: white !important;
+                background-color: black !important; ;
+              "
+              (click)="Delete(k, 'myreq', MyReq)"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+      </table>
+      <img
+        hidden
+        src="../../assets/images/empty.png"
+        style="width: 350px; transform: translateX(50%)"
+        id="img3"
+      />
+    </mat-tab> </mat-tab-group
+></mat-drawer-container>

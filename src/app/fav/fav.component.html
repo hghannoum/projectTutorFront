@@ -1,0 +1,346 @@
+
+<!-- log in and sign up page -->
+
+<div app-theme class="back"></div>
+<div app-theme id="body" class="gradients">
+  <i class="fas fa-university fass"></i>
+  <div class="innerdiv" class="container logo">
+    <span class="innerdiv" class="One">T</span>
+    <span class="Two">U</span>
+    <span class="Three">T</span>
+    <span class="Four">O</span>
+    <span class="Five">R</span>
+  </div>
+
+  <i
+    class="fas fa-moon dark"
+    matRipple
+    [matRippleCentered]="true"
+    [matRippleRadius]="20"
+    id="dark"
+    (click)="toggle()"
+  ></i>
+  <b
+    ><a class="tutor" (click)="toggleTs()" matRipple [matRippleRadius]="10"
+      ><b>{{ type }}</b>
+    </a></b
+  >
+  <img hidden id="student" src="../assets/images/books.png" />
+  <img id="tutor" src="../assets/images/clip-education-2.png" />
+  <div id="first" style="z-index: 5">
+    <h1 class="col-md-6 col-sm-3">{{ this.jmle }}</h1>
+
+    <h5 class="col-md-4 col-sm-2">{{ this.jmle2 }}</h5>
+    <button
+      mat-raised-button
+      color="primary"
+      style="position: absolute; top: 400px !important; left: 360px"
+      class="ggggg"
+      (click)="log()"
+    >
+      Log In
+    </button>
+
+    <button
+      mat-raised-button
+      class="btn2"
+      id="hi"
+      (click)="sign()"
+      style="
+        position: absolute;
+        top: 400px !important;
+        padding: 15;
+        left: 225px;
+      "
+    >
+      Sign Up
+    </button>
+  </div>
+  <form hidden type="submit" id="login">
+    <h1 style="left: -10px; top: -30px">Welcome <i data-emoji="😄"></i></h1>
+
+    <div style="margin-top: 50px">
+      <div class="row">
+        <div class="input_field">
+          <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+          <mat-form-field>
+            <input
+              type="email"
+              matInput
+              name="email"
+              placeholder="Email"
+              [(ngModel)]="emaillog"
+              name="emaillog"
+              id="emaillog"
+              required
+          /></mat-form-field>
+        </div>
+        <div class="row clearfix">
+          <div class="col_half">
+            <div class="input_field">
+              <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+              <mat-form-field>
+                <input
+                  type="password"
+                  matInput
+                  name="name"
+                  placeholder="First Name"
+                  [(ngModel)]="this.paslog"
+                  id="passlog"
+              /></mat-form-field>
+            </div>
+            <div>
+              <label
+                hidden
+                id="false"
+                style="color: red; display: grid"
+                hidden
+                >{{ error }}</label
+              >
+
+              <button
+                style="top: 220px !important"
+                mat-raised-button
+                color="primary"
+                (click)="back()"
+                class="btn"
+              >
+                Back
+              </button>
+
+              <button
+                style="top: 220px !important"
+                mat-raised-button
+                type="submit"
+                class="btn2"
+                (click)="loginn()"
+              >
+                LogIn
+              </button>
+              <label id="false" style="padding-top: 10px"
+                >Don't have an account?
+                <b style="color: #0063a9; cursor: pointer" (click)="sign()"
+                  >SIGNUP</b
+                ></label
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <form
+    hidden
+    id="sign"
+    style="position: absolute; left: 281px; z-index: 40; top: 120px"
+  >
+    <h1 style="left: -10px; top: -30px">Welcome <i data-emoji="😄"></i></h1>
+    <div class="row" style="margin-top: 50px">
+      <div class="input_field">
+        <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+        <mat-form-field>
+          <input
+            type="email"
+            matInput
+            name="emails"
+            placeholder="Email"
+            [(ngModel)]="this.emails"
+            required
+            id="emails"
+        /></mat-form-field>
+      </div>
+      <label hidden id="falseem" style="color: red" hidden
+        >Email not correct</label
+      >
+
+      <label hidden id="falseex" style="color: red" hidden
+        >Email already registred.</label
+      >
+      <div class="row clearfix">
+        <div class="col_half">
+          <div class="input_field">
+            <span><i aria-hidden="true" class="fa fa-user"></i></span>
+            <mat-form-field>
+              <input
+                type="text"
+                [(ngModel)]="this.usernames"
+                matInput
+                name="usernames"
+                required
+                placeholder="First Name"
+                id="usernames"
+            /></mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="input_field">
+        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+        <mat-form-field>
+          <input
+            type="password"
+            name="password"
+            matInput
+            placeholder="Password"
+            [(ngModel)]="this.pas1"
+            required
+            id="pass1"
+        /></mat-form-field>
+      </div>
+    </div>
+    <div class="input_field">
+      <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+      <mat-form-field>
+        <input
+          type="password"
+          matInput
+          name="password"
+          placeholder="Re-type Password"
+          name="pas2"
+          [(ngModel)]="this.pas2"
+          required
+          id="pass2"
+      /></mat-form-field>
+    </div>
+    <label for="" id="rtl" style="color: red" hidden
+      >Password doesn't match</label
+    >
+    <label hidden id="req" style="color: red" hidden>Fields Required</label>
+
+    <button
+      mat-raised-button
+      type="submit"
+      style="padding: 7px 25px"
+      class="btn"
+      color="primary"
+      (click)="back()"
+    >
+      Back
+    </button>
+
+    <button mat-raised-button class="btn2" (click)="signupp()" id="dis">
+      Sign Up
+    </button>
+  </form>
+</div>
+<div hidden id="info" style="float: left" class="row">
+  <h3>Fill your information bellow:</h3>
+  <div>
+    <table>
+      <th>City :</th>
+
+      <td>
+        <mat-form-field
+          *ngIf="city != 'other'"
+          style="width: 90px"
+          appearance="standard"
+        >
+          <mat-label>cities</mat-label>
+
+          <mat-select [(value)]="city" required>
+            <mat-option *ngFor="let topping of cities" [value]="topping">{{
+              topping
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </table>
+
+    <mat-form-field
+      appearance="standard"
+      *ngIf="city == 'other'"
+      style="position: absolute; left: 105px; top: 40px; margin: 0px"
+    >
+      <input
+        [(ngModel)]="othercity"
+        type="text"
+        matInput
+        name="othercity"
+        placeholder="enter your city"
+        name="othercity"
+    /></mat-form-field>
+    <table>
+      <th>Subject :</th>
+      <td>
+        <mat-form-field *ngIf="mat != 'other'" appearance="standard">
+          <mat-label>subject</mat-label>
+          <mat-select [(value)]="mat" required>
+            <mat-option *ngFor="let topping of subjects" [value]="topping">{{
+              topping
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field
+          appearance="standard"
+          *ngIf="mat == 'other'"
+          style="position: absolute; left: 132px; top: 122px; margin-top: -27px"
+        >
+          <input
+            [(ngModel)]="othersub"
+            type="text"
+            matInput
+            name="othersub"
+            placeholder="enter your subject"
+            name="othersub"
+        /></mat-form-field>
+      </td>
+    </table>
+
+    <table>
+      <th>Category :</th>
+      <td>
+        <mat-form-field style="width: 90px; height: 20px" appearance="standard">
+          <mat-label>Category</mat-label>
+          <mat-select [(value)]="cat" required>
+            <mat-option *ngFor="let topping of category" [value]="topping">{{
+              topping
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </table>
+
+    <table>
+      <th>Way :</th>
+      <td>
+        <mat-radio-group [(ngModel)]="way">
+          <mat-radio-button value="Online">Online</mat-radio-button>
+          <mat-radio-button value="In-person">In-person</mat-radio-button>
+          <mat-radio-button value="Both">Both</mat-radio-button>
+        </mat-radio-group>
+      </td>
+    </table>
+    <table>
+      <th>Bio :</th>
+      <td>
+        <mat-form-field
+          style="height: 10px !important"
+          class="example-full-width"
+          appearance="standard"
+        >
+          <mat-label>your bio(optionnal)</mat-label>
+          <textarea
+            matInput
+            placeholder="Ex. "
+            [(ngModel)]="this.bio"
+            name="bio"
+          ></textarea>
+        </mat-form-field>
+      </td>
+    </table>
+
+    <button
+      mat-raised-button
+      style="margin-top: 50px; margin-left: 170px"
+      color="primary"
+      (click)="signupF()"
+      id="dis"
+      class="btn"
+      style="left: 347px !important"
+    >
+      Next >
+    </button>
+  </div>
+</div>
+
+<mat-spinner hidden id="spinner"></mat-spinner>
